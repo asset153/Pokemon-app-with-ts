@@ -1,18 +1,22 @@
-import React from 'react';
+import React from "react";
 import Card from "../Card/Card";
 
 interface ICardsWrapperProps {
-    data: object[]
+  data: object[];
 }
 
- const CardsWrapper: React.FC<ICardsWrapperProps> = function CardsWrapper({data}) {
-    console.log("CardsWrapper", data);
-    
+const CardsWrapper: React.FC<ICardsWrapperProps> = function CardsWrapper(
+  props: ICardsWrapperProps
+) {
+  type IItem = { id?: number };
+
   return (
     <section>
-        {data.map(item => <Card coupleOfThings={item}/>)}
+      {props.data.map((item: IItem) => (
+        <Card key={item.id} coupleOfThings={item} />
+      ))}
     </section>
-  )
-}
+  );
+};
 
 export default CardsWrapper;
