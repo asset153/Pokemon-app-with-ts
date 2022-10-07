@@ -1,29 +1,30 @@
 import React from "react";
 
+
 interface ICardProps {
-  coupleOfThings: {
-    name: string;
-    id: number;
-    types: any;
-    sprites: any;
+  item: {
+    id?: number;
+    name?: string;
+    types?: any
+    sprites?: {
+      front_default: string
+    } 
   };
-}
+};
 
-const Card: React.FC<ICardProps> = function (props: ICardProps) {
-  const { id, name, types, sprites } = props.coupleOfThings;
+const Card: React.FC<ICardProps> = function ({item}) {
 
-  console.log("coupleOfThings", props.coupleOfThings);
-
+  const {id, name, sprites} = item
   return (
     <div className="card" style={{ width: "18rem" }}>
       <img
-        src={sprites.front_default}
+        src={sprites?.front_default}
         className="card-img-top"
         alt="pokemon picture"
       />
       <div className="card-body">
-        <h5 className="card-title">{name}</h5>
-        <p className="card-text">Type: {types[0].type.name}</p>
+        <h5 className="card-title">{name} {id}</h5>
+        <p className="card-text">Type: {item?.types[0].type.name}</p>
         <a href="#" className="btn btn-primary">
           Go somewhere
         </a>
@@ -33,3 +34,4 @@ const Card: React.FC<ICardProps> = function (props: ICardProps) {
 };
 
 export default Card;
+

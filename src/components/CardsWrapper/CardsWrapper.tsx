@@ -5,16 +5,26 @@ interface ICardsWrapperProps {
   data: object[];
 }
 
+interface ExampleObject {
+  id: number;
+  name: string;
+  types: any;
+  sprites: any;
+}
+
 const CardsWrapper: React.FC<ICardsWrapperProps> = function CardsWrapper(
   props: ICardsWrapperProps
 ) {
-  type IItem = { id?: number };
 
+  console.log(props.data);
+  
   return (
     <section>
-      {props.data.map((item: IItem) => (
-        <Card key={item.id} coupleOfThings={item} />
-      ))}
+      {props.data?.map((item: object, index: number) => {
+        return (
+          <Card key={index} item={item}/>
+        )
+      })}
     </section>
   );
 };
