@@ -5,25 +5,13 @@ interface ICardsWrapperProps {
   data: object[];
 }
 
-interface ExampleObject {
-  id: number;
-  name: string;
-  types: any;
-  sprites: any;
-}
-
 const CardsWrapper: React.FC<ICardsWrapperProps> = function CardsWrapper(
   props: ICardsWrapperProps
 ) {
-
-  console.log(props.data);
-  
   return (
-    <section>
-      {props.data?.map((item: object, index: number) => {
-        return (
-          <Card key={index} item={item}/>
-        )
+    <section className="row gap-5 m-auto">
+      {props.data?.map((item: object, index: number): JSX.Element => {
+        return <Card key={index} item={item} />;
       })}
     </section>
   );
